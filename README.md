@@ -1,4 +1,4 @@
-# Thema des Kapitels
+# Arbeiten mit Dateien
 
 ## Lernziele
 Der Teilnehmer/die Teilnehmerin kann nach erfolgreicher Absolvierung dieses Themas:
