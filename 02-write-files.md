@@ -132,4 +132,156 @@ Hier die wichtigen Varianten von `StandardOpenOption` wären:
 
 **Referenz**: [Java-Referenz java.nio.file.StandardOpenOption](https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/nio/file/StandardOpenOption.html)
 
+## C#
+
+In C# gibt es ebenfalls mehrere Möglichkeiten, um Dateien zu (be)schreiben:
+- `System.IO.StreamWriter`
+- `System.IO.TextWriter`
+- `System.IO.BinaryWriter`
+- `System.IO.File`
+
+### `System.IO.StreamWriter`
+
+```csharp
+// C#
+using System;
+using System.IO;
+
+class Program
+{
+    static void Main()
+    {
+        // Pfad zur zu erstellenden Datei angeben
+        string path = @"C:\example.txt";
+
+        // Den Inhalt, der in die Datei geschrieben werden soll
+        string content = "Hello, world!";
+
+        // StreamWriter initialisieren und die Datei erstellen
+        using (StreamWriter writer = new StreamWriter(path))
+        {
+            // Den Inhalt in die Datei schreiben
+            writer.WriteLine(content);
+        }
+
+        Console.WriteLine("Datei erfolgreich erstellt und Inhalt geschrieben.");
+    }
+}
+```
+[Microsoft-Dokumentation](https://learn.microsoft.com/de-de/dotnet/api/system.io.streamwriter?view=net-8.0)
+
+### `System.IO.TextWriter`
+
+```csharp
+// C#
+using System;
+using System.IO;
+
+class Program
+{
+    static void Main()
+    {
+        // Pfad zur zu erstellenden Datei angeben
+        string path = @"C:\example.txt";
+
+        // Den Inhalt, der in die Datei geschrieben werden soll
+        string content = "Hello, world!";
+
+        // TextWriter initialisieren und die Datei erstellen
+        using (TextWriter writer = new StreamWriter(path))
+        {
+            // Den Inhalt in die Datei schreiben
+            writer.WriteLine(content);
+        }
+
+        Console.WriteLine("Datei erfolgreich erstellt und Inhalt geschrieben.");
+    }
+}
+```
+[Microsoft-Dokumentation](https://learn.microsoft.com/de-de/dotnet/api/system.io.textwriter?view=net-8.0)
+
+### `System.IO.BinaryWriter`
+
+```csharp
+// C#
+using System;
+using System.IO;
+
+class Program
+{
+    static void Main()
+    {
+        // Pfad zur zu erstellenden Binärdatei angeben
+        string path = @"C:\example.bin";
+
+        // Die Binärdaten, die in die Datei geschrieben werden sollen
+        byte[] data = { 0x48, 0x65, 0x6C, 0x6C, 0x6F, 0x2C, 0x20, 0x77, 0x6F, 0x72, 0x6C, 0x64, 0x21 };
+
+        // BinaryWriter initialisieren und die Datei erstellen
+        using (BinaryWriter writer = new BinaryWriter(File.OpenWrite(path)))
+        {
+            // Die Binärdaten in die Datei schreiben
+            writer.Write(data);
+        }
+
+        Console.WriteLine("Datei erfolgreich erstellt und Inhalt geschrieben.");
+    }
+}
+```
+
+[Microsoft-Dokumentation](https://learn.microsoft.com/de-de/dotnet/api/system.io.binarywriter?view=net-8.0)
+
+### `System.IO.File`
+
+Die Klasse `System.IO.File` ist eine Utility-Klasse, die viele Möglichkeiten bietet, um mit Dateien zu arbeiten. Hier präsentieren wir, wie eine Datei geschrieben wird.
+
+Eine Variante ist, dass der Inhalt der Datei auf einmal geschrieben wird:
+```csharp
+// C#
+using System;
+using System.IO;
+
+class Program
+{
+    static void Main()
+    {
+        // Pfad zur zu erstellenden Datei angeben
+        string path = @"C:\example.txt";
+
+        // Den Inhalt, der in die Datei geschrieben werden soll
+        string content = "Hello, world!";
+
+        // Die Datei erstellen und den Inhalt schreiben
+        File.WriteAllText(path, content);
+
+        Console.WriteLine("Datei erfolgreich erstellt und Inhalt geschrieben.");
+    }
+}
+```
+
+Typischerweise zum Beispiel für CSV-Dateien kann man den Inhalt anhand eines Arrays von strings:
+```csharp
+// C#
+using System;
+using System.IO;
+
+class Program
+{
+    static void Main()
+    {
+        // Pfad zur zu erstellenden Datei angeben
+        string path = @"C:\example.txt";
+
+        // Die Zeilen, die in die Datei geschrieben werden sollen
+        string[] lines = { "Line 1", "Line 2", "Line 3" };
+
+        // Die Datei erstellen und die Zeilen schreiben
+        File.WriteAllLines(path, lines);
+
+        Console.WriteLine("Datei erfolgreich erstellt und Inhalt geschrieben.");
+    }
+}
+```
+[Microsoft-Dokumentation](https://learn.microsoft.com/de-de/dotnet/api/system.io.file?view=net-8.0)
+
 Zurück zur [Startseite](README.md)

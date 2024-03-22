@@ -4,14 +4,14 @@ In den verschiedenen Programmiersprachen gibt es unterschiedliche Methoden/Klass
 - Wie groß ist die Datei?
 - Ist der Inhalt der Datei strukturiert und wenn ja nach welchem Format
 - Muss die Datei unbedingt gleich vollständig ausgelesen werden oder reicht es, wenn man diese Zeile für Zeile ausliest
-- Sollen nur bestimmte Werte aus der Datei herausextrahiert werden oder immer eine ganze Zeile?
+- Sollen nur bestimmte Werte aus der Datei heraus extrahiert werden oder immer eine ganze Zeile?
 - ...
 
-Da Klassennamen und die Art, wie die Klassen arbeiten je Programmiersprache sehr unterschiedlich sind werden wir in diesem Kapitel je Programmiersprache einen eigenen Kapitel erstellen.
+Da Klassennamen und die Art, wie die Klassen arbeiten je Programmiersprache sehr unterschiedlich sind werden wir in diesem Kapitel je Programmiersprache ein eigenes Kapitel erstellen.
 
 ## Java
 
-In Java werden 3 vielverwendete Klassen vorgestellt, die sich mit Dateien beschäftigen und auch auf ihre Anwendungsgebiete eingehen:
+In Java werden 3 viel verwendete Klassen vorgestellt, die sich mit Dateien beschäftigen und auch auf ihre Anwendungsgebiete eingehen:
 - `java.util.Scanner`
 - `java.io.FileReader`
 - `java.io.BufferedReader`
@@ -166,8 +166,213 @@ private static void readSomeLinesWithFilesClass() throws IOException {
 
 ## C#
 
-```c#
+In C# gibt es ebenfalls mehrere Möglichkeiten, um Files auszulesen:
+- `System.IO.StreamReader`
+- `System.IO.TextReader`
+- `System.IO.BinaryReader`
+- `System.IO.File`
+
+### `System.IO.StreamReader`
+
+Mit einem StreamReader kann man Dateien Zeile für Zeile oder als gesamte Datei auslesen. 
+
+```csharp
+//C# - Beispiel Datei auslesen Zeile für Zeile
+using System;
+using System.IO;
+
+class Program
+{
+    static void Main()
+    {
+        // Pfad zur Datei angeben
+        string path = @"C:\example.txt";
+
+        // StreamReader initialisieren und die Datei öffnen
+        using (StreamReader sr = new StreamReader(path))
+        {
+            // Zeilenweise lesen, bis das Dateiende erreicht ist
+            string line;
+            while ((line = sr.ReadLine()) != null)
+            {
+                // Den gelesenen Inhalt verarbeiten
+                Console.WriteLine(line);
+            }
+        }
+    }
+}
+```
+
+```csharp
+//C# - Beispiel Datei vollständig auslesen
+using System;
+using System.IO;
+
+class Program
+{
+    static void Main()
+    {
+        // Pfad zur Datei angeben
+        string path = @"C:\example.txt";
+
+        // StreamReader initialisieren und die Datei öffnen
+        using (StreamReader sr = new StreamReader(path))
+        {
+            // Den gesamten Inhalt der Datei lesen
+            string content = sr.ReadToEnd();
+            // Den gelesenen Inhalt verarbeiten
+            Console.WriteLine(content);
+        }
+    }
+}
+```
+
+[Microsoft-Dokumentation](https://learn.microsoft.com/de-de/dotnet/api/system.io.streamreader?view=net-8.0)
+
+### `System.IO.TextReader`
+
+Wenn man speziell mit Text-Dateien arbeiten möchte ist die Klasse `System.IO.TextReader` besonders gut geeignet. Wie man damit eine Datei ausliest zeigen wir im folgenden Beispiel. Auch hier besteht die Möglichkeit sowohl die Datei Zeile für Zeile oder als Gesamtes auszulesen. 
+
+```csharp
+//C#
+using System;
+using System.IO;
+
+class Program
+{
+    static void Main()
+    {
+        // Pfad zur Datei angeben
+        string path = @"C:\example.txt";
+
+        // TextReader initialisieren und die Datei öffnen
+        using (TextReader reader = File.OpenText(path))
+        {
+            // Zeilenweise lesen, bis das Dateiende erreicht ist
+            string line;
+            while ((line = reader.ReadLine()) != null)
+            {
+                // Den gelesenen Inhalt verarbeiten
+                Console.WriteLine(line);
+            }
+        }
+    }
+}
 
 ```
+
+```csharp
+// C#
+using System;
+using System.IO;
+
+class Program
+{
+static void Main()
+{
+// Pfad zur Datei angeben
+string path = @"C:\example.txt";
+
+        // TextReader initialisieren und die Datei öffnen
+        using (TextReader reader = File.OpenText(path))
+        {
+            // Den gesamten Inhalt der Datei lesen
+            string content = reader.ReadToEnd();
+
+            // Den gelesenen Inhalt verarbeiten
+            Console.WriteLine(content);
+        }
+    }
+}
+```
+
+[Microsoft-Dokumentation](https://learn.microsoft.com/de-de/dotnet/api/system.io.textreader?view=net-8.0)
+
+### `System.IO.BinaryReader`
+
+Im Falle einer Binary-Datei bietet uns `System.IO.BinaryReader` folgende Möglichkeit:
+
+```csharp
+// C#
+using System;
+using System.IO;
+
+class Program
+{
+    static void Main()
+    {
+        // Pfad zur Binärdatei angeben
+        string path = @"C:\example.bin";
+
+        // BinaryReader initialisieren und die Datei öffnen
+        using (BinaryReader reader = new BinaryReader(File.OpenRead(path)))
+        {
+            // Daten aus der Datei lesen
+            byte[] buffer = new byte[1024]; // Puffer zum Lesen der Daten
+            int bytesRead;
+            while ((bytesRead = reader.Read(buffer, 0, buffer.Length)) > 0)
+            {
+                // Die gelesenen Daten verarbeiten (hier einfach ausgeben)
+                Console.WriteLine("Gelesene Bytes: " + bytesRead);
+                Console.WriteLine("Inhalt: " + BitConverter.ToString(buffer, 0, bytesRead));
+            }
+        }
+    }
+}
+```
+
+[Microsoft-Dokumentation](https://learn.microsoft.com/de-de/dotnet/api/system.io.binaryreader?view=net-8.0)
+
+### `System.IO.File`
+
+Die Klasse `System.IO.File` ist eine Utility-Klasse, die viele Möglichkeiten bietet, um mit Dateien zu arbeiten. Hier präsentieren wir, wie eine Datei vollständig ausgelesen wird. Im Gegensatz zum `StreamReader` bietet `File` keine Möglichkeit eine Datei Zeile für Zeile auszulesen.
+
+```csharp
+//C# Beispiel Zeile für Zeile
+using System;
+using System.IO;
+
+class Program
+{
+    static void Main()
+    {
+        // Pfad zur Textdatei angeben
+        string path = @"C:\example.txt";
+
+        // Die Textdatei zeilenweise in ein String-Array lesen
+        string[] lines = File.ReadAllLines(path);
+
+        // Die gelesenen Zeilen verarbeiten
+        foreach (string line in lines)
+        {
+            Console.WriteLine(line);
+        }
+    }
+}
+```
+
+```csharp
+//C# Beispiel ganze Datei auf einmal
+using System;
+using System.IO;
+
+class Program
+{
+    static void Main()
+    {
+        // Pfad zur Textdatei angeben
+        string path = @"C:\example.txt";
+
+        // Den gesamten Inhalt der Textdatei lesen
+        string content = File.ReadAllText(path);
+
+        // Den gelesenen Inhalt verarbeiten
+        Console.WriteLine(content);
+    }
+}
+```
+
+
+[Microsoft-Dokumentation](https://learn.microsoft.com/de-de/dotnet/api/system.io.file?view=net-8.0)
 
 Zurück zur [Startseite](README.md)
