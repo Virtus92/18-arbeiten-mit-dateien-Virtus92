@@ -12,7 +12,7 @@ Daher ist es wichtig Fehler abzufangen und darauf zu reagieren.
 
 ## Java
 
-In Java haben wir einen weiteren Vorteil bei der Nutzung des `try`-Statements: wir können Ressourcen angeben. Ein Beispiel sagt mehr als 1000 Worte:
+In Java haben wir einen weiteren Vorteil bei der Nutzung des `try`-Statements: wir können Ressourcen angeben. Das folgende Beispiel verdeutlicht es:
 
 ```java
 // Java 
@@ -20,12 +20,14 @@ In Java haben wir einen weiteren Vorteil bei der Nutzung des `try`-Statements: w
 import java.io.BufferedReader;
 import java.io.FileReader;
 
-private static void readWithTryWithResource() throws IOException {
-    try (BufferedReader reader = new BufferedReader(new FileReader("library.txt"))) {
-        String currentLine = reader.readLine();
-        while (currentLine != null) {
-            System.out.println(currentLine);
-            currentLine = reader.readLine();
+public class BufferedReaderUsage {
+    private static void readWithTryWithResource() throws IOException {
+        try (BufferedReader reader = new BufferedReader(new FileReader("library.txt"))) {
+            String currentLine = reader.readLine();
+            while (currentLine != null) {
+                System.out.println(currentLine);
+                currentLine = reader.readLine();
+            }
         }
     }
 }
@@ -37,9 +39,34 @@ Weitere Informationen zu diesem Thema findest du in diesem [Tutorial](https://ww
 
 ## C#
 
+In C# funktioniert es geringfügig anders. Um eine Ressource zu verwenden, kommt das `using`-Statement zur Anwendung. Der `try-catch-finally`-Block wird dann rund herum gesetzt.
+
 ```C#
 // C# 
+using System;
+using System.IO;
 
+public class StreamReaderUsage
+{
+    private static void ReadWithTryWithResource()
+    {
+        try 
+        {
+            using (StreamReader reader = new StreamReader("library.txt"))
+            {
+                string currentLine = reader.ReadLine();
+                while (currentLine != null)
+                {
+                    Console.WriteLine(currentLine);
+                    currentLine = reader.ReadLine();
+                }
+            }
+        } catch (Exception ex) 
+        {
+            // Exception handling
+        }
+    }
+}
 ```
 
 Zurück zur [Startseite](README.md)

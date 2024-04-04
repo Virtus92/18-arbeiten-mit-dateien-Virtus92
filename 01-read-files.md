@@ -22,7 +22,7 @@ In Java werden 3 viel verwendete Klassen vorgestellt, die sich mit Dateien besch
 
 Die `java.util.Scanner`-Klasse ist eine allgemeine Klasse, die darauf abzielt, Inputs der meistverwendeten Art und Weisen zu implementieren. So kennen wir diese Klasse bereits in Bezug auf die Konsoleneingaben. 
 
-```java
+```
 new Scanner(System.in);
 ```
 
@@ -34,13 +34,15 @@ Genauso können damit aber auch Dateien ausgelesen werden. Das hängt mit dem Ob
 import java.io.File;
 import java.util.Scanner;
 
-private static void readWithScanner() throws FileNotFoundException {
-  File libraryFile = new File("library.txt");
-  Scanner fileScanner = new Scanner(libraryFile);
-  while (fileScanner.hasNextLine()) {
-    System.out.println(fileScanner.nextLine());
-  }
-  fileScanner.close();
+public class ScannerUsageWithFiles {
+    public void readWithScanner() throws FileNotFoundException {
+        File libraryFile = new File("library.txt");
+        Scanner fileScanner = new Scanner(libraryFile);
+        while (fileScanner.hasNextLine()) {
+            System.out.println(fileScanner.nextLine());
+        }
+        fileScanner.close();
+    }
 }
 ```
 
@@ -72,12 +74,14 @@ Hier ein Beispiel:
 
 import java.io.FileReader;
 
-private static void readWithFileReader() throws IOException {
-  FileReader reader = new FileReader("library.txt");
-  char[] content = new char[100];
-  reader.read(content);
-  System.out.println(content);
-  reader.close();
+public class FileReaderUsage {
+    private void readWithFileReader() throws IOException {
+        FileReader reader = new FileReader("library.txt");
+        char[] content = new char[100];
+        reader.read(content);
+        System.out.println(content);
+        reader.close();
+    }
 }
 ```
 
@@ -104,14 +108,17 @@ Zum Beispiel:
 import java.io.BufferedReader;
 import java.io.FileReader;
 
-private static void readWithBufferedReader() throws IOException {
-  BufferedReader reader = new BufferedReader(new FileReader("library.txt"));
-  String currentLine = reader.readLine();
-  while (currentLine != null) {
-    System.out.println(currentLine);
-    currentLine = reader.readLine();
-  }
-  reader.close();
+public class BufferedReaderUsage {
+
+    private void readWithBufferedReader() throws IOException {
+        BufferedReader reader = new BufferedReader(new FileReader("library.txt"));
+        String currentLine = reader.readLine();
+        while (currentLine != null) {
+            System.out.println(currentLine);
+            currentLine = reader.readLine();
+        }
+        reader.close();
+    }
 }
 ```
 
@@ -140,25 +147,20 @@ Folgende Beispiele zeigen, wie diese 2 Methoden verwendet werden bzw. ein Object
 import java.nio.file.Files;
 import java.nio.file.Paths;
 
-private static void readWholeFileWithFilesClass() throws IOException {
-  List<String> allLines = Files.readAllLines(Paths.get("library.txt"));
-  for (String line : allLines) {
-    System.out.println(line);
-  }
-}
-```
+public class IOFilesUsage {
+    private void readWholeFileWithFilesClass() throws IOException {
+        List<String> allLines = Files.readAllLines(Paths.get("library.txt"));
+        for (String line : allLines) {
+            System.out.println(line);
+        }
+    }
 
-```java
-// Java
-
-import java.nio.file.Files;
-import java.nio.file.Paths;
-
-private static void readSomeLinesWithFilesClass() throws IOException {
-  Stream<String> allLines = Files.lines(Paths.get("library.txt"));
-  allLines.skip(3L)
-          .forEach(line -> System.out.println(line)); //Die jeweilige Zeile wird erst jetzt aus dem File gelesen
-  allLines.close();
+    private void readSomeLinesWithFilesClass() throws IOException {
+        Stream<String> allLines = Files.lines(Paths.get("library.txt"));
+        allLines.skip(3L)
+                .forEach(line -> System.out.println(line)); //Die jeweilige Zeile wird erst jetzt aus dem File gelesen
+        allLines.close();
+    }
 }
 ```
 

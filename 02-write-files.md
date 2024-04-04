@@ -25,13 +25,15 @@ Analog zum FileReader gibt es auch eine `java.io.FileWriter`-Klasse.
 
 import java.io.FileWriter;
 
-private static void writeWithFileWriter() throws IOException {
-    FileWriter writer = new FileWriter("look-at-my-file.txt");
-    char[] content = ("Look at my file\n"
-                    + "My file is amazing\n"
-                    + "Give it a lick").toCharArray();
-    writer.write(content);
-    writer.close();
+public class FileWriterUsage {
+    private void writeWithFileWriter() throws IOException {
+        FileWriter writer = new FileWriter("look-at-my-file.txt");
+        char[] content = ("Look at my file\n"
+                + "My file is amazing\n"
+                + "Give it a lick").toCharArray();
+        writer.write(content);
+        writer.close();
+    }
 }
 ```
 
@@ -52,13 +54,15 @@ Auch hier finden wir das Pendant zum BufferedFileReader: `java.io.BufferedWriter
 import java.io.FileWriter;
 import java.io.BufferedWriter;
 
-private static void writeWithBufferedWriter() throws IOException {
-    BufferedWriter writer = new BufferedWriter(new FileWriter("narwhals.txt"));
-    writer.append("Narwhals, Narwhals\n");
-    writer.append("Swimming in the ocean\n");
-    writer.append("Causing a commotion\n");
-    writer.append("'Cos they are so awesome");
-    writer.close();
+public class FileWriterUsage {
+    private void writeWithBufferedWriter() throws IOException {
+        BufferedWriter writer = new BufferedWriter(new FileWriter("narwhals.txt"));
+        writer.append("Narwhals, Narwhals\n");
+        writer.append("Swimming in the ocean\n");
+        writer.append("Causing a commotion\n");
+        writer.append("'Cos they are so awesome");
+        writer.close();
+    }
 }
 ```
 
@@ -80,13 +84,15 @@ Eine weitere Klasse, um in Files zu schreiben, in die Klasse `java.io.PrintWrite
 import java.io.FileWriter;
 import java.io.PrintWriter;
 
-private static void writeWithPrintWriter() throws IOException {
-    PrintWriter writer = new PrintWriter(new FileWriter("never-gonna-give-files-up.txt"));
-    writer.println("Never gonna give you up");
-    writer.println("Never gonna let you down");
-    writer.println("Never gonna run around and desert you");
-    writer.printf("%s (%d)", "Never gonna make you cry", 15);
-    writer.close();
+public class PrintWriterUsage {
+    private void writeWithPrintWriter() throws IOException {
+        PrintWriter writer = new PrintWriter(new FileWriter("never-gonna-give-files-up.txt"));
+        writer.println("Never gonna give you up");
+        writer.println("Never gonna let you down");
+        writer.println("Never gonna run around and desert you");
+        writer.printf("%s (%d)", "Never gonna make you cry", 15);
+        writer.close();
+    }
 }
 ```
 
@@ -107,14 +113,16 @@ import java.nio.file.Path;
 import java.nio.file.Files;
 import java.nio.file.StandardOpenOption;
 
-private static void writeWithFilesClass() throws IOException {
-    String text = "I wanna be the very best\n" +
-                  "Like no one ever was\n" +
-                  "To catch them is my real test\n" +
-                  "To train them is my cause";
-    Files.write(Path.of("gotta-catch-em-all.txt"), 
-                text.getBytes(StandardCharsets.UTF_8), 
-                StandardOpenOption.CREATE, StandardOpenOption.APPEND));
+public class NIOFileFilesUsage {
+    private void writeWithFilesClass() throws IOException {
+        String text = "I wanna be the very best\n" +
+                      "Like no one ever was\n" +
+                      "To catch them is my real test\n" +
+                      "To train them is my cause";
+        Files.write(Path.of("gotta-catch-em-all.txt"), 
+                    text.getBytes(StandardCharsets.UTF_8), 
+                    StandardOpenOption.CREATE, StandardOpenOption.APPEND);
+    }
 }
 ```
 
