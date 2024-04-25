@@ -48,7 +48,7 @@ public class ScannerUsageWithFiles {
 
 Im Konstruktor der File-Klasse müssen wir den Pfad (relativ oder absolut) zur Datei mitgeben. Hier haben wir uns für den relativen Pfad entschieden: `"library.txt"`. 
 
-![Projektstruktur](img/project-structure.png)
+![Projektstruktur](../img/project-structure.png)
 
 Der relative Pfad bezieht sich auf den Basispfad des Projekts. In diesem Falle der Ordner: `"C:\User\Digi-Mindset\Documents\Files"`, in dem sich die Datei "library.txt" befindet.
 
@@ -377,4 +377,4 @@ class Program
 
 [Microsoft-Dokumentation](https://learn.microsoft.com/de-de/dotnet/api/system.io.file?view=net-8.0)
 
-Zurück zur [Startseite](README.md)
+Zurück zur [Startseite](../README.md)

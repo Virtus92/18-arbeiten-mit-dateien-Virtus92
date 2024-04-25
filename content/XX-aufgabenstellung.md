@@ -11,6 +11,6 @@ Dein Programm soll außerdem eine Person erstellen können und diese in die Date
 - Der:die Teilnehmer:in kann aufzählen, welche Klassen vorgestellt wurden, die geeignet sind, um Dateien auszulesen bzw. zu schreiben sind.
 - Der:die Teilnehmer:in hat sinnvolle Klassen für das Auslesen bzw. Schreiben der Datei angewendet und kann gut begründen, warum diese sinnvoll sind.
 - Das Programm erfüllt die oben angeführten Anforderungen.
-- Das Programm erfüllt die Clean-Code Richtlinien.
+- Das Programm erfüllt die Clean-Code-Richtlinien.
 - Die Variablen-/Methoden-/Klassennamen sind aussagekräftig.
 - Das Programm ist in GITHub eingecheckt.

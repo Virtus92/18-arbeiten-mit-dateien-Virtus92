@@ -292,4 +292,4 @@ class Program
 ```
 [Microsoft-Dokumentation](https://learn.microsoft.com/de-de/dotnet/api/system.io.file?view=net-8.0)
 
-Zurück zur [Startseite](README.md)
+Zurück zur [Startseite](../README.md)

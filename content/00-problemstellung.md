@@ -7,4 +7,4 @@ In diesem Kapitel werden wir durchgehen:
 - wie kann man Dateien speichern?
 - was muss man dazu beachten?
 
-Zurück zur [Startseite](README.md)
+Zurück zur [Startseite](../README.md)
