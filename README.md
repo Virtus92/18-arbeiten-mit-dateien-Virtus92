@@ -13,3 +13,5 @@ Der:die Teilnehmer:in kann nach erfolgreicher Absolvierung dieses Themas:
 1. [Dateien aus dem Filesystem auslesen](content/01-read-files.md)
 1. [Dateien ins Filesystem schreiben](content/02-write-files.md)
 1. [sicheres Arbeiten mit Dateien](content/03-secure-work-with-files.md)
+1. [MVC-Design Pattern](content/04-Design-Pattern-MVC.md)
+1. [Aufgabenstellung](content/XX-aufgabenstellung.md)
