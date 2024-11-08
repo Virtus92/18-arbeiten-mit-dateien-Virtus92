@@ -14,6 +14,6 @@ Verwende das MVC-Design Pattern in deinem Programm!
 - Der:die Teilnehmer:in hat sinnvolle Klassen für das Auslesen bzw. Schreiben der Datei angewendet und kann gut begründen, warum diese sinnvoll sind.
 - Das Programm erfüllt die oben angeführten Anforderungen.
 - Das Programm erfüllt die Clean-Code-Richtlinien.
-- Das Programm verwendet das MVC-Design Pattern richtig.
+- Das Programm trennt die Klassen in User Interaction/Business Logic/Persistierung richtig.
 - Die Variablen-/Methoden-/Klassennamen sind aussagekräftig.
 - Das Programm ist in GITHub eingecheckt.
