@@ -6,8 +6,6 @@ Erstelle ein Programm, das das CSV-Files `personen.csv` ausliest. Erstelle hierf
 
 Dein Programm soll außerdem eine Person erstellen können und diese in die Datei speichern können. Wähle eine der Writer-Klassen, um die Daten in die Datei hineinzuschreiben.
 
-Verwende das MVC-Design Pattern in deinem Programm!
-
 ## Abnahmekriterien
 
 - Der:die Teilnehmer:in kann aufzählen, welche Klassen vorgestellt wurden, die geeignet sind, um Dateien auszulesen bzw. zu schreiben sind.
