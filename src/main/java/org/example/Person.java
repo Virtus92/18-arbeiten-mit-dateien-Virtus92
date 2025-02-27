@@ -60,7 +60,7 @@ public class Person {
         Person[] personen = new Person[5];
         int i = 0;
         for (String line : allLines) {
-            String[] csvFields = line.split(",");
+            String[] csvFields = line.split(",\"");
             for (int j = 0; j < csvFields.length; j++) {
                 String temp = csvFields[j];
                 csvFields[j] = temp.substring(1, temp.length() - 1);
